@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "env",
+    "stage-0",
+    "flow"
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src/"],
+    }],
+    "transform-class-properties",
+    "transform-flow-strip-types"
+  ]
+}

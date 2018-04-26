@@ -1,0 +1,8 @@
+[ignore]
+
+[include]
+types
+
+[options]
+module.system=node
+module.system.node.resolve_dirname=node_modules

@@ -1,0 +1,42 @@
+{
+  "name": "kumuluzee-nodejs-discovery",
+  "version": "1.0.0",
+  "description": "KumuluzEE Node.js module for service discovery",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "flow": "flow check .",
+    "postinstall": "rm -fr dist && mkdir dist && babel src --out-dir dist"
+  },
+  "keywords": [
+    "kumuluzee",
+    "discovery"
+  ],
+  "author": "Nejc Smolej",
+  "license": "MIT",
+  "dependencies": {
+    "consul": "^0.30.0",
+    "node-etcd": "^5.1.0",
+    "semver": "^5.5.0",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-module-resolver": "^3.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.66.0"
+  }
+}
