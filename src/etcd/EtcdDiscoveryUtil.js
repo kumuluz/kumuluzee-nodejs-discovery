@@ -98,13 +98,13 @@ class EtcdDiscoveryUtil {
   }
 
   async register(serviceName, version, environment, ttl, pingInterval, singleton) {
-    let baseUrl = await ConfigurationUtil.get('kumuluzee.base-url') || null;
+    let baseUrl = await ConfigurationUtil.get('kumuluzee.server.base-url') || null;
     if (baseUrl && baseUrl !== '') {
       try {
         baseUrl = new URL(baseUrl);
         baseUrl = baseUrl.toString();
       } catch (err) {
-        console.error(`Cannot parse kumuluzee.base-url. Exception: ${err}`);
+        console.error(`Cannot parse kumuluzee.server.base-url. Exception: ${err}`);
         baseUrl = null;
       }
     }
@@ -167,18 +167,18 @@ class EtcdDiscoveryUtil {
           return;
         }
       }
-
-      const serviceConfiguration = new EtcdServiceConfiguration(serviceName, environment, version, ttl, singleton, baseUrl, containerUrl, this.clusterId, this.startRetryDelay, this.maxRetryDelay);
-
-      this.registeredServices.push(serviceConfiguration);
-
-      const registrator = new EtcdRegistrator(this.etcd, serviceConfiguration, this.resilience);
-
-      registrator.run();
-      const handle = setInterval(() => registrator.run(), pingInterval * 1000);
-
-      this.registratorHandles.push(handle);
     }
+
+    const serviceConfiguration = new EtcdServiceConfiguration(serviceName, environment, version, ttl, singleton, baseUrl, containerUrl, this.clusterId, this.startRetryDelay, this.maxRetryDelay);
+
+    this.registeredServices.push(serviceConfiguration);
+
+    const registrator = new EtcdRegistrator(this.etcd, serviceConfiguration, this.resilience);
+
+    registrator.run();
+    const handle = setInterval(() => registrator.run(), pingInterval * 1000);
+
+    this.registratorHandles.push(handle);
   }
 
   async deregister() {
@@ -219,7 +219,7 @@ class EtcdDiscoveryUtil {
             if (node.nodes) {
               node.nodes.forEach(instanceNode => {
                 const lastKeyLayer = getLastKeyLayer(instanceNode.key);
-                const { value } = node;
+                const { value } = instanceNode;
 
                 if (lastKeyLayer === 'url' && value) url = value;
                 if (lastKeyLayer === 'containerUrl' && value) containerUrlString = value;
