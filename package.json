@@ -1,6 +1,6 @@
 {
   "name": "kumuluzee-discovery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "KumuluzEE Node.js module for service discovery",
   "main": "dist/index.js",
   "engines": {
