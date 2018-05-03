@@ -1,4 +1,4 @@
-import { ConfigurationUtil } from 'kumuluzee-nodejs-config';
+import { ConfigurationUtil } from 'kumuluzee-config';
 import DiscoveryUtil from 'common/DiscoveryUtil';
 
 class KumuluzeeDiscovery {

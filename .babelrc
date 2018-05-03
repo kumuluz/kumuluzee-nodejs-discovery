@@ -1,13 +1,25 @@
 {
   "presets": [
-    "env",
+    [
+      "env",
+      {
+        "targets": {
+          "node": "8.9.1"
+        }
+      }
+    ],
     "stage-0",
     "flow"
   ],
   "plugins": [
-    ["module-resolver", {
-      "root": ["./src/"],
-    }],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src/"
+        ]
+      }
+    ],
     "transform-class-properties",
     "transform-flow-strip-types"
   ]

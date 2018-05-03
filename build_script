@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+const exec = require("child_process");
+
+const OS_WINDOWS = "win32";
+const OS_LINUX = "linux";
+const OS_MAC = "darwin";
+const OS_FREEBSD = "freebsd";
+const OS_SUNOS = "sunos";
+
+const doSystemCall = (syscall) => {
+    const returnVar = {
+        status: 0,
+        stdout: "",
+        stderr: ""
+    };
+
+    try {
+        returnVar.stdout = exec.execSync(syscall).toString();
+        return returnVar;
+    } catch (exception) {
+        returnVar.stderr = exception.stderr;
+        returnVar.status = exception.status;
+        return returnVar;
+    }
+};
+
+const doWindowsBuild = () => {
+    doSystemCall("rmdir /s /q dist");
+    console.log("Transpiling code ...");
+    let status = doSystemCall("babel src -d dist").status;
+    if (status === 0) {
+        console.log("Transpiling code succeeded!");
+        console.log("Copying flow types ...");
+        let status = doSystemCall("node_modules\\.bin\\flow-copy-source -v src dist").status;
+        if (status === 0) {
+            console.log("Copying flow types suceeded!");
+            console.log("Project succesfully built!");
+        } else {
+            console.error("ERROR: Flow types not copied!");
+        }
+    } else {
+        console.error("ERROR: Flow code not transpiled!");
+    }
+};
+
+const doLinuxBuild = () => {
+    doSystemCall("rm -r dist");
+    let status = doSystemCall("babel src -d dist").status;
+    if (status === 0) {
+        let status = doSystemCall("node_modules/.bin/flow-copy-source -v src dist").status;
+        if (status === 0) {
+            console.log("Project succesfully built!");
+        } else {
+            console.error("Flow types not copied!");
+        }
+    } else {
+        console.error("Flow code not transpiled!");
+    }
+};
+
+switch (process.platform) {
+    case OS_WINDOWS:
+        doWindowsBuild();
+        break;
+    case OS_LINUX:
+        doLinuxBuild();
+        break;
+    default:
+        console.error("OS not supported for building project! Edit file 'build_script' to add support for your OS.");
+}

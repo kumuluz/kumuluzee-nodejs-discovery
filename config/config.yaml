@@ -1,0 +1,20 @@
+kumuluzee:
+  name: test
+  server:
+    base-url: http://localhost:3000
+    http:
+      port: 3000
+  env:
+    name: dev
+  discovery:
+    etcd:
+      hosts: http://localhost:2379
+  config:
+    etcd:
+      hosts: http://localhost:2379
+rest-config:
+  val1: ab cd
+  val2: 123
+  val3:
+    val31: true
+val32: yes

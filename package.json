@@ -1,16 +1,23 @@
 {
-  "name": "kumuluzee-nodejs-discovery",
-  "version": "1.0.0",
+  "name": "kumuluzee-discovery",
+  "version": "0.0.0",
   "description": "KumuluzEE Node.js module for service discovery",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
     "lint": "eslint .",
     "flow": "flow check .",
-    "postinstall": "rm -fr dist && mkdir dist && babel src --out-dir dist"
+    "build": "node build_script",
+    "test": "npm run build && mocha"
   },
   "keywords": [
+    "kumuluz",
     "kumuluzee",
-    "discovery"
+    "discovery",
+    "etcd",
+    "consul"
   ],
   "author": "Nejc Smolej",
   "license": "MIT",
@@ -18,10 +25,12 @@
     "consul": "^0.30.0",
     "node-etcd": "^5.1.0",
     "semver": "^5.5.0",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "kumuluzee-config": "^0.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-module-resolver": "^3.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -29,6 +38,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.1.2",
     "cross-env": "^5.1.3",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -37,6 +47,8 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.66.0"
+    "flow-bin": "^0.66.0",
+    "flow-copy-source": "^1.3.0",
+    "mocha": "^5.1.1"
   }
 }
