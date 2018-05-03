@@ -1,6 +1,6 @@
 {
   "name": "kumuluzee-discovery",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "KumuluzEE Node.js module for service discovery",
   "main": "dist/index.js",
   "engines": {
@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "flow": "flow check .",
     "build": "node build_script",
+    "prepublish": "npm run build",
     "test": "npm run build && mocha"
   },
   "keywords": [
