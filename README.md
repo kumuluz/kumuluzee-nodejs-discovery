@@ -1,4 +1,5 @@
 # KumuluzEE Node.js Discovery
+[![Build Status](https://travis-ci.org/kumuluz/kumuluzee-nodejs-discovery.svg?branch=master)](https://travis-ci.org/kumuluz/kumuluzee-nodejs-discovery)
 
 KumuluzEE Node.js Discovery is a service discovery library for the KumuluzEE microservice framework.  It is Node.js package based on a [KumuluzEE Discovery](https://github.com/kumuluz/kumuluzee-discovery), service discovery extension for microservices written in Java programming language. It provides support for service registration, service discovery and client side load balancing.
 
@@ -9,7 +10,7 @@ KumuluzEE Node.js Discovery provides full support for microservices packed as Do
 Node version >= 8.0.0:
 
 ```
-$ npm install --save kumuluzee-nodejs-discovery
+$ npm install --save kumuluzee-discovery
 ```
 Note: if you are installing library on Debian operating system run this command first:
 
@@ -32,7 +33,7 @@ Library also supports retry delays on watch connection errors. For more informat
 Firstly we need to import KumuluzEE Discovery client.
 
 ```javascript
-import KumuluzeeDiscovery from 'kumuluzee-nodejs-discovery'
+const KumuluzeeDiscovery = require('kumuluzee-discovery').default;
 ```
 ***.initialize({extension})***
 
@@ -47,12 +48,12 @@ KumuluzeeDiscovery.initialize({ extension: 'consul' });
 Registers service to specified discovery source with given options.
 
 Function `registerService` takes six parameters:
-* value (String): service name of a registered service. Service name can be overridden with configuration key  `kumuluzee.name`,
-* ttl (Integer, optional): seconds to live of a registration key in the store. Default value is `30`. TTL can be overridden with configuration key `kumuluzee.discovery.ttl`,
-* pingInterval (Integer, optional): an interval in which service updates registration key value in the store. Default value is `20` seconds. Ping interval can be overridden with configuration key  `kumuluzee.discovery.ping-interval`,
-* environment (String, optional): environment in which service is registered. Default value is `'dev'`. Environment can be overridden with configuration key  `kumuluzee.env.name`,
-* version (String, optional): version of service to be registered. Default value is `'1.0.0'`. Version can be overridden with configuration key  `kumuluzee.version`,
-* singleton (Boolean, optional): if true ensures, that only one instance of service with the same name, version and environment is registered. Default value is `false`.
+* **value** (String): service name of a registered service. Service name can be overridden with configuration key  `kumuluzee.name`,
+* **ttl** (Integer, optional): seconds to live of a registration key in the store. Default value is `30`. TTL can be overridden with configuration key `kumuluzee.discovery.ttl`,
+* **pingInterval** (Integer, optional): an interval in which service updates registration key value in the store. Default value is `20` seconds. Ping interval can be overridden with configuration key  `kumuluzee.discovery.ping-interval`,
+* **environment** (String, optional): environment in which service is registered. Default value is `'dev'`. Environment can be overridden with configuration key  `kumuluzee.env.name`,
+* **version** (String, optional): version of service to be registered. Default value is `'1.0.0'`. Version can be overridden with configuration key  `kumuluzee.version`,
+* **singleton** (Boolean, optional): if true ensures, that only one instance of service with the same name, version and environment is registered. Default value is `false`.
 
 Example of service registration:
 ```javascript
@@ -73,10 +74,10 @@ Discovers service on specified discovery source.
 
 Function takes four parameters:
 
-* value (String): name of the service we want to discover,
-* environment (String, optional): service environment, e.g. prod, dev, test. If value is not provided, environment is set to the value defined with the configuration key  `kumuluzee.env.name`. If the configuration key is not present, value is set to  `'dev'`,
-* version (String, optional): service version or NPM version range. Default value is `'*'`, which resolves to the highest deployed version,
-* accessType (String, optional): defines, which URL is returned. Supported values are  `'GATEWAY'`  and  `'DIRECT'`. Default is  `'GATEWAY'`.
+* **value** (String): name of the service we want to discover,
+* **environment** (String, optional): service environment, e.g. prod, dev, test. If value is not provided, environment is set to the value defined with the configuration key  `kumuluzee.env.name`. If the configuration key is not present, value is set to  `'dev'`,
+* **version** (String, optional): service version or NPM version range. Default value is `'*'`, which resolves to the highest deployed version,
+* **accessType** (String, optional): defines, which URL is returned. Supported values are  `'GATEWAY'`  and  `'DIRECT'`. Default is  `'GATEWAY'`.
 
 
 Example of service discovery:

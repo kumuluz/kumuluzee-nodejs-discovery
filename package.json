@@ -20,6 +20,11 @@
     "etcd",
     "consul"
   ],
+  "repository": "https://github.com/kumuluz/kumuluzee-nodejs-discovery",
+  "bugs": "https://github.com/kumuluz/kumuluzee-nodejs-discovery/issues",
+  "files": [
+    "dist/**"
+  ],
   "author": "Nejc Smolej",
   "license": "MIT",
   "dependencies": {
