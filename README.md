@@ -35,12 +35,16 @@ Firstly we need to import KumuluzEE Discovery client.
 ```javascript
 const KumuluzeeDiscovery = require('kumuluzee-discovery').default;
 ```
-***.initialize({extension})***
+***.initialize(options)***
 
-Function connects to given extension. Return value is a Promise, so you need to call `await` for the purpose of successful connection to given discovery source. In order to connect to Consul you need to set extension value as `'consul'` and `'etcd'` if you want to connect to etcd.
+Connect to a given discovery source. Function accepts `options` object with two properties:
+
+* **extension** (String): name of discovery source, possible values are `'consul'` and `'etcd'`,
+* **configPath** (String, optional): path to your configuration source file, default values are `'config/config.yml'` or `'config/config.yaml'`.
+
 
 ```javascript
-KumuluzeeDiscovery.initialize({ extension: 'consul' });
+await KumuluzeeDiscovery.initialize({ extension: 'consul' });
 ```
 
 ***.registerService(options)***
