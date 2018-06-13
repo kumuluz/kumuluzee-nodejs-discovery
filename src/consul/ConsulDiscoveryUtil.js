@@ -1,6 +1,6 @@
 import consulClient from 'consul';
 import { URL } from 'url';
-import { ConfigurationUtil } from 'kumuluzee-config';
+import { ConfigurationUtil } from '@kumuluz/kumuluzee-config';
 import InitializationUtils from 'common/InitializationUtils';
 import ConsulServiceConfiguration from 'consul/ConsulServiceConfiguration';
 import ConsulRegistrator from 'consul/ConsulRegistrator';

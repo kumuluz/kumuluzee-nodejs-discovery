@@ -1,6 +1,6 @@
 {
-  "name": "kumuluzee-discovery",
-  "version": "0.0.2",
+  "name": "@kumuluz/kumuluzee-discovery",
+  "version": "1.0.0",
   "description": "KumuluzEE Node.js module for service discovery",
   "main": "dist/index.js",
   "engines": {
@@ -32,7 +32,7 @@
     "node-etcd": "^5.1.0",
     "semver": "^5.5.0",
     "uuid": "^3.2.1",
-    "kumuluzee-config": "^0.0.2"
+    "@kumuluz/kumuluzee-config": "latest"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

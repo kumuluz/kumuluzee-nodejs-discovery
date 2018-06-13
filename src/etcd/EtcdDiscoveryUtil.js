@@ -1,7 +1,7 @@
 import EtcdClient from 'node-etcd';
 import os from 'os';
 import { URL } from 'url';
-import { ConfigurationUtil } from 'kumuluzee-config';
+import { ConfigurationUtil } from '@kumuluz/kumuluzee-config';
 import InitializationUtils from 'common/InitializationUtils';
 import EtcdServiceConfiguration from 'etcd/EtcdServiceConfiguration';
 import EtcdRegistrator from 'etcd/EtcdRegistrator';
