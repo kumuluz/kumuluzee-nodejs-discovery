@@ -2,14 +2,18 @@ import { ConfigurationUtil } from '@kumuluz/kumuluzee-config';
 import DiscoveryUtil from 'common/DiscoveryUtil';
 
 class KumuluzeeDiscovery {
-  async initialize({ extension }) {
+  async initialize({ extension, configPath }) {
+    ConfigurationUtil.initDefaultConfigurationSources({ configPath });
     await DiscoveryUtil.initialize(extension);
   }
 
   async registerService(properties) {
     const serviceName = await ConfigurationUtil.get('kumuluzee.name') || (properties && properties.value) || null;
 
-    if (!serviceName) console.error('Service name not provided!');
+    if (!serviceName) {
+      console.error('Service name not provided!');
+      return;
+    }
 
     const ttl = await ConfigurationUtil.get('kumuluzee.discovery.ttl') || (properties && properties.ttl) || 30;
 
