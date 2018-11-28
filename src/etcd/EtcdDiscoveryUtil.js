@@ -247,7 +247,7 @@ class EtcdDiscoveryUtil {
 
         if (!this.serviceVersions.has(`${serviceName}_${environment}`)) {
           // we are already watching all versions, no need to watch specific version
-          this.watchServiceInstances(getServiceKeyInstances(environment, serviceName, version), parseInt(etcdKeysResponseWhole.headers['x-etcd-index'], 10) + 1);
+          this.watchServiceInstances(getServiceKeyInstances(environment, serviceName, version), parseInt(etcdKeysResponseWhole.data['x-etcd-index'], 10) + 1);
         }
       }
     }

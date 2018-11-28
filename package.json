@@ -1,6 +1,6 @@
 {
   "name": "@kumuluz/kumuluzee-discovery",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "KumuluzEE Node.js module for service discovery",
   "main": "dist/index.js",
   "engines": {
@@ -28,11 +28,11 @@
   "author": "Nejc Smolej",
   "license": "MIT",
   "dependencies": {
+    "@kumuluz/kumuluzee-config": "latest",
     "consul": "^0.30.0",
-    "node-etcd": "^5.1.0",
+    "node-etcd": "^7.0.0",
     "semver": "^5.5.0",
-    "uuid": "^3.2.1",
-    "@kumuluz/kumuluzee-config": "latest"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
